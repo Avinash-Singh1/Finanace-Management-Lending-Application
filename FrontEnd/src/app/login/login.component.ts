@@ -57,23 +57,23 @@ export class LoginComponent {
         const userdata = response.user;
         console.log("User data:", userdata);
         this.router.navigate(['/dashboared']);
-        // if (userdata && userdata.role) {
-        //   if (userdata.role === '2') {
-        //     console.log("Navigating to dashboard");
-        //     this.cookieService.set('token', response.token);
-        //     this.router.navigate(['/dashboared']);
-        //   } else if (userdata.role === '1') {
-        //     console.log("Navigating to user dashboard");
-        //     this.cookieService.set('token', response.token);
-        //     this.router.navigate(['/userdash']);
-        //   } else {
-        //     console.error("Invalid role");
-        //     alert("Invalid credentials");
-        //   }
-        // } else {
-        //   console.error("User data or role is missing");
-        //   alert("Login failed, please try again");
-        // }
+        if (userdata && userdata.role) {
+          if (userdata.role === '2') {
+            console.log("Navigating to dashboard");
+            this.cookieService.set('token', response.token);
+            this.router.navigate(['/dashboared']);
+          } else if (userdata.role === '1') {
+            console.log("Navigating to user dashboard");
+            this.cookieService.set('token', response.token);
+            this.router.navigate(['/userdash']);
+          } else {
+            console.error("Invalid role");
+            alert("Invalid credentials");
+          }
+        } else {
+          console.error("User data or role is missing");
+          alert("Login failed, please try again");
+        }
       },
       (error) => {
         console.error("Error during login:", error);

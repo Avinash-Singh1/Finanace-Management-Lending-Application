@@ -36,56 +36,56 @@ export const routes: Routes = [
     },
     {
         path:"dashboared",component:DashboredComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
     },
     {
         path:"userdash",component:UserdashComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
     },
     {
         path:"table",component:TableComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"transaction",component:TansactionsComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"loan",component:LoansComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     }
     ,
     {
         path:"user",component:UsersComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"amount",component:AmountsComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"payments",component:PaymentsComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"profile",component:ProfileComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"nextdate",component:NextduedateComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     },
     {
         path:"paympentpf",component:PaymentproofformComponent
-        // , canActivate:[authguardGuard]
+        , canActivate:[authguardGuard]
 
     }
 ];
