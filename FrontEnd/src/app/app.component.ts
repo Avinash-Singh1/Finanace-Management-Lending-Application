@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import {DevExtremeModule} from "devextreme-angular"
 import notify from "devextreme/ui/notify";
@@ -19,7 +18,7 @@ import { AsidemenuComponent } from './components/asidemenu/asidemenu.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterModule,AsidemenuComponent, RouterOutlet,FormsModule,LoginComponent,NavbarComponent,RegisterComponent,HttpClientModule,DevExtremeModule,HomeComponent],
+  imports: [CommonModule,RouterModule,AsidemenuComponent, RouterOutlet,FormsModule,LoginComponent,NavbarComponent,HttpClientModule,DevExtremeModule,HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

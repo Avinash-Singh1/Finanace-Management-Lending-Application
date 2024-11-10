@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from '../../login/login.component';
-import { RegisterComponent } from '../../register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import {DevExtremeModule} from "devextreme-angular"
 import notify from "devextreme/ui/notify";
@@ -16,7 +15,7 @@ import { HomeComponent } from '../home/home.component';
 @Component({
   selector: 'app-asidemenu',
   standalone: true,
-  imports: [CommonModule,RouterModule, RouterOutlet,FormsModule,LoginComponent,NavbarComponent,RegisterComponent,HttpClientModule,DevExtremeModule,HomeComponent],
+  imports: [CommonModule,RouterModule, RouterOutlet,FormsModule,LoginComponent,NavbarComponent,HttpClientModule,DevExtremeModule,HomeComponent],
   templateUrl: './asidemenu.component.html',
   styleUrl: './asidemenu.component.css'
 })

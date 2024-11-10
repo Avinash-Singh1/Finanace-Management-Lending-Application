@@ -12,7 +12,8 @@ export const authguardGuard: CanActivateFn = (route, state) => {
   
   const mytoken =cookie.get('token');
   if(mytoken)
-  { console.log("I am From Auth Guard");
+  { 
+    console.log("I am From Auth Guard");
     return true;
   }
   else

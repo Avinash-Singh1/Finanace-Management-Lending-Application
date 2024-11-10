@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { DashboredComponent } from './dashbored/dashbored.component';
 import { TableComponent } from './table/table.component';
 import { authguardGuard } from './guards/authguard.guard'; 
@@ -12,15 +11,12 @@ import { TansactionsComponent } from './components/tansactions/tansactions.compo
 import { UserdashComponent } from './componets/userdash/userdash.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
-import { MainComponent } from './main/main.component';
 import { NextduedateComponent } from './components/nextduedate/nextduedate.component';
 import { PaymentproofformComponent } from './components/paymentproofform/paymentproofform.component';
 
 
 export const routes: Routes = [
-    // {
-    //     path: '',    redirectTo: '/login', pathMatch: 'full' 
-    // },
+ 
     {
         path:"",component:HomeComponent
     },
@@ -30,10 +26,7 @@ export const routes: Routes = [
     {
         path:"login",component:LoginComponent
     },
-    {
-        path:"register",component:RegisterComponent,
-        //  canActivate:[authguardGuard]
-    },
+  
     {
         path:"dashboared",component:DashboredComponent
         , canActivate:[authguardGuard]
