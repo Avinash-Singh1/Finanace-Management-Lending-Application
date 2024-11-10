@@ -1,0 +1,70 @@
+/* General Header Section Styling */
+.header_section {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #180e5c;
+  padding: 15px 0;
+  z-index: 1030; /* Ensure it stays on top */
+}
+
+.container-fluid {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+/* Navbar Brand Styling */
+.navbar-brand-text {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.nav-link {
+  padding: 5px 20px;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: white;
+  font-weight: 600;
+}
+.navbar-nav{
+    gap: 45px;
+}
+
+/* Navbar Toggler Icon */
+.navbar-toggler {
+  padding: 0;
+  width: 37px;
+  height: 42px;
+  border: none;
+  background: none;
+}
+
+.navbar-toggler-icon {
+  width: 35px;
+  height: 4px;
+  background-color: #ffffff;
+  margin: 7px 0;
+  border-radius: 5px;
+  display: block;
+  transition: all 0.3s;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  transform: rotate(45deg);
+}
+
+/* Search Button */
+.nav_search-btn {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: none;
+  background: none;
+}

@@ -134,7 +134,7 @@ a:focus {
 .sub_page .hero_area .hero_bg_box {
   display: none;
 }
-
+/* 
 .header_section {
   padding: 15px 0;
 }
@@ -244,9 +244,11 @@ a:focus {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   top: 0;
-}
+} */
 
 /*end header section*/
+
+
 /* slider section */
 .slider_section {
   -webkit-box-flex: 1;

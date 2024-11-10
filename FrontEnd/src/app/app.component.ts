@@ -35,7 +35,7 @@ export class AppComponent   {
         // this.flag = event.url.includes('/login');
         // this.flag =  event.url.includes('/login') ||event.url.includes('/');
           console.log(" flag: ",event.url);
-          if(event.url=='/login' ||event.url=='/' ||event.url=='/home'){
+          if(event.url=='/login' ||event.url=='/' ||event.url=='/home'||  event.url=='/#section1' || event.url=='/#section2' ||  event.url=='/#section3' ||  event.url=='/#section4'){
               this.flag = true;
           }
           else

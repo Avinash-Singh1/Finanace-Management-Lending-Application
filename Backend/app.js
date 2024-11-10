@@ -1,44 +1,46 @@
-// configDotenv
 import express from "express";
-// import session from 'express-session';
 import cookieParser from "cookie-parser";
 import approutes from "./routes/app-routes.js";
-import bodyParser from 'body-parser';
+import bodyParser from "body-parser";
+import path from "path";
 import { configDotenv } from "dotenv";
-// import path from "path";
+import cors from "cors";
 
-const app =express();
-// const port = 3000;
-const port = process.env.PORT ||3000 ;
-// app.use(session({
-//     secret: 'your_secret_key',
-//     resave: false,
-//     saveUninitialized: true,
-//   }));
+// Load environment variables
+configDotenv();
 
-// app.use(express.static(path.join(path.resolve(), "public")));
-app.use(express.urlencoded({ extended: true}));
+const app = express();
+app.use(cors());
+const port = process.env.PORT || 3000;
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
-// app.set("view engine")
-// app.get("/",(req,res)=>{
-//     res.status(200).json({"Status":"Success"});
-// })
-app.get("/setcookie",(req,res)=>{
 
+// Serve static files from the 'frontend' directory
+app.use(express.static(path.join(path.resolve(), "frontend/browser")));
+
+// API routes
+app.use(approutes);
+
+// Fallback to serve index.html for all other routes (for a Single Page Application)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(path.resolve(), 'frontend/browser', 'index.html'));
+});
+
+// Cookie setting endpoint for testing
+app.get("/setcookie", (req, res) => {
     res.cookie("token", "iamcookie", {
         httpOnly: true,
         expires: new Date(Date.now() + 60 * 1000),
-        secure: true, // Uncomment this line for production if your site is served over HTTPS
-      });
-      res.status(200).json({"status":"sucesss avinash"})
-})
+        secure: false, // Set to true if your site is served over HTTPS
+    });
+    res.status(200).json({ "status": "success avinash" });
+});
 
-
-app.use(approutes);
-
-app.listen((3000),(req,res)=>{
-    console.log("Listening at "+port)
-})
-
+// Start server
+app.listen(port, () => {
+    console.log("Listening at http://localhost:" + port);
+});
