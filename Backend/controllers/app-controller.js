@@ -51,130 +51,51 @@ export const registerfun = async (req, res) => {
       res.status(201).json({ message: "User registered successfully" });
     });
   });
-
-  //   try {
-  //     const { name, email, password } = req.body;
-
-  //     console.log("'/api/register' called", req.body);
-
-  //     // Generate a salt
-  //     const saltRounds = 10;
-  //     const salt = await bcrypt.genSalt(saltRounds);
-
-  //     // Hash the password with the generated salt
-  //     const hashedPassword = await bcrypt.hash(password, salt);
-  //     console.log("Hashed password: ", hashedPassword);
-  //     const data ={
-  //         name:name,
-  //         email:email,
-  //         password:hashedPassword,
-  //         salt: salt
-  //     };
-
-  //     console.log("Data: ",data);
-  // Assuming you have a stored procedure called 'insert_in_register' in your MySQL database
-  //         var queryData = '"'.replace(/"/g, "'") + JSON.stringify(usersdata) + '"'.replace(/"/g, "'");
-
-  //     const results= await jk_finance_db.query('CALL jk_finance.insert_in_register(' + queryData + ');');
-
-  //     res.status(200).json({ "Register": "register Success" });
-  //   } catch (error) {
-  //     console.error("Error", error);
-  //     res.status(500).json({ error: "Internal Server Error" });
-  //   }
 };
 
+
 // export const loginfun = async (req, res) => {
-//     const { email, password } = req.body;
-//     // Find the user in the 'users' array (replace with database retrieval)
-//     const user = await jk_finance_User.findOne({ where: {
-//             email: email,
-//           }});
+//   console.log("Inside login function");
 
-//           console.log("User Found: ",user);
+//   const { email, password } = req.body;
 
+//   try {
+//     // Retrieve the user from the database based on the provided email
+//     const user = await jk_finance_User.findOne({ where: { email } });
+
+//     // Check if user exists
 //     if (!user) {
-//       return res.status(401).json({ error: 'Authentication failed' });
+//       return res.status(401).json({ error: "Authentication failed" });
 //     }
 
-//     // Verify the password using stored salt and hash
-//     bcrypt.compare(password, user.password, (err, result) => {
-//       if (err || !result) {
-//         return res.status(401).json({ error: 'Authentication failed' });
-//       }
+//     // Compare provided password with stored hash
+//     const isPasswordValid = await bcrypt.compare(password, user.password);
+//     if (!isPasswordValid) {
+//       return res.status(401).json({ error: "Authentication failed" });
+//     }
 
-//             // Generate a JWT token
-//             const tokenObj={
-//                 email:user.email,
-//                 password:user.password,
-
-//             }
-//             console.log("Users: ",tokenObj);
-//             // Store the token in session storage
-//             const token = generateToken(tokenObj);
-//             console.log("Token:",token);
-//             res.cookie("token", token, {
-//                 httpOnly: true,
-//                 expires: new Date(Date.now() + 60 * 1000),
-//               });
-
-//     res.status(200).json({ message: 'Login successful', token });
-//     //   res.status(200).json({ message: 'Login successful' });
+//     // Generate JWT token
+//     const token = jwt.sign({ _id: user.id }, process.env.JWT_SECRET, {
+//       expiresIn: "1h", // Token expiration time (optional)
 //     });
 
-// };
+//     console.log("Token generated: ", token);
 
-// export const loginfun = async (req, res) => {
-//     const { email, password } = req.body;
-
-//     try {
-//       // Find the user in the 'users' array (replace with database retrieval)
-//       const user = await jk_finance_User.findOne({
-//         where: {
-//           email: email,
-//         },
-//       });
-
-//       console.log("User Found: ", user);
-
-//       if (!user) {
-//         return res.status(401).json({ error: 'Authentication failed' });
-//       }
-
-//       // Verify the password using stored hash
-//       const result = await bcrypt.compare(password, user.password);
-
-//       if (!result) {
-//         return res.status(401).json({ error: 'Authentication failed' });
-//       }
-
-//       // Generate a JWT token
-//       const tokenObj = {
+//     // Return success response
+//     return res.status(200).json({
+//       message: "Login successful",
+//       token,
+//       user: {
+//         id: user.id,
 //         email: user.email,
-//         password: user.password,
-//       };
-
-//       console.log("Users: ", tokenObj);
-
-//       // Store the token in cookies
-//     //   const token = generateToken(tokenObj);
-//     //   console.log("Token Vlaue: ",token);
-//     //   const token = jwt.sign({ _id: user.id }, "avinash");
-//     const token = jwt.sign({ _id: user.id }, "sdjasdbajsdbjasd");
-
-// console.log("Token ",token);
-//       res.cookie( "token",token, {
-
-//         expires: new Date(Date.now() + 60 * 1000),
-//       });
-
-//       res.status(200).json({ message: 'Login successful', token });
-//     } catch (error) {
-//       console.error("Error during login:", error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     }
-//   };
-
+//         // Add other user details if needed, but avoid sending sensitive information
+//       },
+//     });
+//   } catch (error) {
+//     console.error("Error during login:", error);
+//     return res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
 export const loginfun = async (req, res) => {
   console.log("INside loginfun");
   const { email, password } = req.body;
@@ -211,11 +132,10 @@ export const loginfun = async (req, res) => {
     console.log("Token: ", token);
 
     // Store the token in cookies
-    res.cookie("token", token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 60 * 1000),
-      // secure: true, // Uncomment this line for production if your site is served over HTTPS
-    });
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   expires: new Date(Date.now() + 60 * 1000),
+    // });
 
     res.status(200).json({
       message: "Login successful",
